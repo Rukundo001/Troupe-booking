@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage - Payments</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+    }
+    header {
+      background: green;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logout-btn {
+      background: #dc2626;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .sidebar {
+      width: 220px;
+      background: #333333;
+      color: #fff;
+      height: 100vh;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      padding-top: 2rem;
+    }
+    .sidebar a {
+      display: block;
+      padding: 1rem 1.5rem;
+      color: #ccc;
+      text-decoration: none;
+    }
+    .sidebar a:hover {
+      background: #374151;
+      color: #fff;
+    }
+    .main {
+      margin-left: 220px;
+      padding: 2rem;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .top-bar button {
+      padding: 0.5rem 1rem;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+    th {
+      background: #f9fafb;
+      font-weight: bold;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropbtn {
+      padding: 0.3rem 0.6rem;
+      background: #6b7280;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 120px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+      right: 0;
+      border-radius: 4px;
+    }
+    .dropdown-content button {
+      background: none;
+      color: #333;
+      padding: 0.5rem 1rem;
+      text-align: left;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+    }
+    .dropdown-content button:hover {
+      background-color: #f1f1f1;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Manage Payments</h1>
+    <div>Admin Portal</div>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </header>
+
+  <div class="sidebar">
+    <a href="Grand&board.html">Dashboard</a>
+    <a href="Grand&bookings.html">Bookings</a>
+    <a href="Grand&Troupes.html">Troupes</a>
+    <a href="Grand&Customers.html">Customers</a>
+    <a href="Grand&Payments.html">Payments</a>
+    <a href="Grand&Feedbacks.html">Feedbacks</a>
+    <a href="Grand&manager.html">Troupe Managers</a>
+  </div>
+
+  <div class="main">
+    <div class="top-bar">
+      <h2>Payments</h2>
+      <button onclick="addPayment()">Add Payment</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Troupe Name</th>
+          <th>Amount (Rwf)</th>
+          <th>Payment Method</th>
+          <th>Payment Status</th>
+          <th>Event Date</th>
+          <th>Event Location</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="paymentTable">
+        <tr>
+          <td>Jean Uwimana</td>
+          <td>Inganzo Ngari</td>
+          <td>100000</td>
+          <td>Mobile Money</td>
+          <td>Paid</td>
+          <td>2025-05-15</td>
+          <td>Kigali Arena</td>
+          <td>
+            <div class="dropdown">
+              <button class="dropbtn">Actions</button>
+              <div class="dropdown-content">
+                <button onclick="editRow(this)">Edit</button>
+                <button onclick="saveRow(this)">Save</button>
+                <button onclick="deleteRow(this)">Delete</button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function addPayment() {
+      const table = document.getElementById("paymentTable");
+      const row = table.insertRow();
+      const columns = ["", "", "", "", "", "", ""];
+
+      for (let i = 0; i < columns.length; i++) {
+        const cell = row.insertCell(i);
+        cell.contentEditable = true;
+        cell.innerText = columns[i];
+      }
+
+      const actionCell = row.insertCell(columns.length);
+      actionCell.innerHTML = `
+        <div class="dropdown">
+          <button class="dropbtn">Actions</button>
+          <div class="dropdown-content">
+            <button onclick="editRow(this)">Edit</button>
+            <button onclick="saveRow(this)">Save</button>
+            <button onclick="deleteRow(this)">Delete</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function editRow(btn) {
+      const row = btn.closest("tr");
+      for (let i = 0; i < row.cells.length - 1; i++) {
+        row.cells[i].contentEditable = true;
+      }
+    }
+
+    function saveRow(btn) {
+      const row = btn.closest("tr");
+      for (let i = 0; i < row.cells.length - 1; i++) {
+        row.cells[i].contentEditable = false;
+      }
+    }
+
+    function deleteRow(btn) {
+      const row = btn.closest("tr");
+      row.remove();
+    }
+
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = "Home.html";
+    }
+  </script>
+</body>
+</html>

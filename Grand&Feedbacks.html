@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage - Feedbacks</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+    }
+
+    header {
+      background: green;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logout-btn {
+      background: #dc2626;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .sidebar {
+      width: 220px;
+      background: #333333;
+      color: #fff;
+      height: 100vh;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      padding-top: 2rem;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 1rem 1.5rem;
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      background: #374151;
+      color: #fff;
+    }
+
+    .main {
+      margin-left: 220px;
+      padding: 2rem;
+    }
+
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .table-header h2 {
+      margin: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: bold;
+    }
+
+    tr:hover {
+      background: #f1f5f9;
+    }
+
+    /* Star rating styles */
+    .stars {
+      color: gold;
+      font-size: 18px;
+    }
+
+    .action-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .action-btn {
+      padding: 6px 12px;
+      font-size: 14px;
+      background-color: #4b5563;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 120px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      z-index: 1;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .dropdown-content a {
+      color: #111;
+      padding: 10px 14px;
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .action-dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .main {
+        margin-left: 0;
+        padding: 1rem;
+      }
+
+      .sidebar {
+        position: relative;
+        height: auto;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Manage Feedbacks</h1>
+    <div>Admin Portal</div>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </header>
+
+  <div class="sidebar">
+    <a href="Grand&board.html">Dashboard</a>
+    <a href="Grand&bookings.html">Bookings</a>
+    <a href="Grand&Troupes.html">Troupes</a>
+    <a href="Grand&Customers.html">Customers</a>
+    <a href="Grand&Payments.html">Payments</a>
+    <a href="Grand&Feedbacks.html">Feedbacks</a>
+    <a href="Grand&manager.html">Troupe Managers</a>
+  </div>
+
+  <div class="main">
+    <div class="table-header">
+      <h2>Feedbacks</h2>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Troupe to Rate</th>
+          <th>Rating (1–5)</th>
+          <th>Event Date</th>
+          <th>Comment</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Jean Uwimana</td>
+          <td>Inganzo Ngari</td>
+          <td><span class="stars">★★★★☆</span></td>
+          <td>2025-05-10</td>
+          <td>Amazing performance and punctual!</td>
+          <td>
+            <div class="action-dropdown">
+              <button class="action-btn">Actions ▼</button>
+              <div class="dropdown-content">
+                <a href="#">Edit</a>
+                <a href="#">Delete</a>
+                <a href="#">Hide</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Grace Umutoni</td>
+          <td>Imboni z'Umuco</td>
+          <td><span class="stars">★★★★☆</span></td>
+          <td>2025-05-12</td>
+          <td>Great energy and professionalism.</td>
+          <td>
+            <div class="action-dropdown">
+              <button class="action-btn">Actions ▼</button>
+              <div class="dropdown-content">
+                <a href="#">Edit</a>
+                <a href="#">Delete</a>
+                <a href="#">Hide</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Eric Niyonzima</td>
+          <td>Abakobwa b'Ibyivugo</td>
+          <td><span class="stars">★★★★★</span></td>
+          <td>2025-05-08</td>
+          <td>Incredible dancing and coordination.</td>
+          <td>
+            <div class="action-dropdown">
+              <button class="action-btn">Actions ▼</button>
+              <div class="dropdown-content">
+                <a href="#">Edit</a>
+                <a href="#">Delete</a>
+                <a href="#">Hide</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Diane Ishimwe</td>
+          <td>Intore za Kacyiru</td>
+          <td><span class="stars">★★★☆☆</span></td>
+          <td>2025-05-05</td>
+          <td>Good performance but slightly late.</td>
+          <td>
+            <div class="action-dropdown">
+              <button class="action-btn">Actions ▼</button>
+              <div class="dropdown-content">
+                <a href="#">Edit</a>
+                <a href="#">Delete</a>
+                <a href="#">Hide</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = "Home.html";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+
+<html>
+<head>
+ 
+  
+  <title>Admin Dashboard - Troupe Booking</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+    }
+    header {
+      background: green;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .sidebar {
+      width: 220px;
+      background: #333333;
+      color: #fff;
+      height: 100vh;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      padding-top: 2rem;
+    }
+    .logout-btn {
+      background: #dc2626;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+	.sidebar a {
+      display: block;
+      padding: 1rem 1.5rem;
+      color: #ccc;
+      text-decoration: none;
+    }
+    .sidebar a:hover {
+      background: #374151;
+      color: #fff;
+    }
+    .main {
+      margin-left: 220px;
+      padding: 2rem;
+    }
+    .cards {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .card {
+      flex: 1;
+      min-width: 200px;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+    .card h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #111;
+    }
+    .card p {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #4b5563;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+    th {
+      background: #f9fafb;
+      font-weight: bold;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+    .activity-feed, .feedback {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee;
+    }
+    @media (max-width: 768px) {
+      .cards {
+        flex-direction: column;
+      }
+      .main {
+        margin-left: 0;
+        padding: 1rem;
+      }
+      .sidebar {
+        position: relative;
+        height: auto;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Manage Dashboard</h1>
+  <div>Admin Portal</div>
+  <button class="logout-btn" onclick="logout()">Logout</button>
+</header>
+
+<div class="sidebar">
+  <a href="Grand&board.html">Dashboard</a>
+  <a href="Grand&bookings.html">Bookings</a>
+  <a href="Grand&Troupes.html">Troupes</a>
+  <a href="Grand&Customers.html">Customers</a>
+  <a href="Grand&Payments.html">Payments</a>
+  <a href="Grand&Feedbacks.html">Feedbacks</a>
+  <a href="Grand&manager.html">Troupe Managers</a>
+</div>
+
+<div class="main">
+  <div class="cards">
+    <div class="card">
+      <h3>Total Troupes</h3>
+      <p id="totalTroupes">12</p>
+    </div>
+    <div class="card">
+      <h3>Today's Bookings</h3>
+      <p id="todayBookings">5</p>
+    </div>
+    <div class="card">
+      <h3>Pending Approvals</h3>
+      <p id="pending">3</p>
+    </div>
+    <div class="card">
+      <h3>Current Month's Revenue</h3>
+      <p id="revenue">250 000 Rwf</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Recent Bookings</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Customer</th>
+          <th>Troupe</th>
+          <th>Event Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="bookingsTable">
+        <tr>
+          <td>Jean Uwimana</td>
+          <td>Inganzo Ngari</td>
+          <td>2025-05-10</td>
+          <td>Approved</td>
+        </tr>
+        <tr>
+          <td>Grace Umutoni</td>
+          <td>Imboni z' umuco</td>
+          <td>2025-05-12</td>
+          <td>Pending</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section activity-feed">
+    <h2>Recent Activity </h2>
+    <ul id="activityFeed">
+      <li>Jean Uwimana booked Inganzo Ngari</li>
+      <li>New troupe "Abakobwa b'Ibyivugo" registered</li>
+      <li>Grace Umutoni left feedback on Imboni z' umuco</li>
+    </ul>
+  </div>
+
+  <div class="section feedback">
+    <h2>Recent Feedback</h2>
+    <ul>
+      <li><strong>Jean Uwimana:</strong> Amazing performance! </li>
+      <li><strong>Grace Umutoni:</strong> Great troupe, very professional!</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  
+  document.getElementById("totalTroupes").textContent = 10;
+  document.getElementById("todayBookings").textContent = 4;
+  
+    function logout() {
+      alert("You have been logged out.");
+      window.location.href = "Home.html";
+    }
+ 
+</script>
+
+</body>
+</html>

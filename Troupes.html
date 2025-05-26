@@ -1,0 +1,259 @@
+
+<html>
+
+<head>
+<title>Troupes</title>
+<style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      padding: 0;
+      margin: 0;
+	  align-items: center;
+       font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 20px;
+	}
+
+    header {
+      background-color: #2e8b57;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+       td a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #333;
+      display: block;
+      padding: 35px 0;
+      transition: background-color 0.3s;
+    }
+
+    td a:hover {
+      background-color: #ddd;
+    }
+      .container {
+       display: flex;
+       flex-direction: row;
+       gap: 20px;
+       overflow-x: auto;
+       padding: 20px;
+       margin: 20px auto;
+       max-width: 100%;
+       box-sizing: border-box;
+      }
+
+      .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .troupe-card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .troupe-card:hover {
+      transform: scale(1.02);
+    }
+
+    .troupe-card img {
+      width: 60%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .troupe-info {
+      padding: 15px;
+    }
+
+    .troupe-info h3 {
+      margin-top: 0;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .book-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+
+    .book-btn:hover {
+      background-color: #218838;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select {
+      width: 20%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 20%;
+      padding: 8px;
+      font-size: 16px;
+      background-color: #2e8b57;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #256c47;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      background-color: #1e3d59;
+      color: white;
+    }
+  </style>
+ 
+</head>
+<body>
+
+<table  border="0" width="100%%" height="100%">
+    <tr height="100"><th colspan="5"  style="background-color: green; "> <h1  style="color: white;">Rwanda Dance Troupe Booking</h1></th></tr>
+	<h2> <tr height="100"><td style="background-color: #F5F5DC; text-align:center;"><a href="Bookings.html">Bookings</a></td>
+	<td style="background-color: #F5F5DC; text-align:center;"><a href="Troupes.html">Troupes</a></td>
+	<td style="background-color: #F5F5DC; text-align:center;"><a href="Payment.html">Payments</a></td>
+	<td style="background-color: #F5F5DC; text-align:center;"><a href="Feedbacks.html">Feedbacks</a></td>
+	<td style="background-color: #F5F5DC; text-align:center;"><a href="Login.html">Login</a></td></tr></h2>
+	<tr><td colspan="5" rowspan="4">   <h1>Available Troupes</h1>
+
+  <div class="container">
+    <div class="troupe-card">
+      <img src="inyambo.jpeg" alt="Inyambo">
+      <div class="troupe-info">
+        <h3>Inyambo Culture Troupe</h3>
+        <p>Inyambo showcases the elegance of Rwandan traditional royal dances, known for their majestic cow-horn movements and live drumming</p>
+        <p class="price">Base Price: 500 000 Rwf</p>
+        <a href="Bookings.html">Book Now</a>
+      </div>
+    </div>
+
+    <div class="troupe-card">
+      <img src="inyamibwa.jpg" alt="Imboni">
+      <div class="troupe-info">
+        <h3>Imboni zumuco Troupe</h3>
+        <p>A youth-led troupe preserving Rwandan heritage through storytelling, song, and synchronized dance routines.</p>
+        <p class="price">Base Price: 600 000 Rwf</p>
+        <a href="Bookings.html">Book Now</a>
+      </div>
+	  </div>
+	  
+	  <div class="troupe-card">
+      <img src="intore.jpg" alt="Abakurambere>
+      <div class="troupe-info">
+        <h3>Abakurambere Troupe</h3>
+        <p>Known for historical performances and re-enactments of Rwanda’s cultural traditions, especially during national holidays.</p>
+        <p class="price">Base Price: 200 000 Rwf</p>
+        <a href="Bookings.html">Book Now</a>
+      </div>
+    </div>
+	
+       <div style="width: 400px; height: 400px;" class= "troupe-card">
+      <img src="ngari.jpg" alt="Inganzo Ngari">
+      <div class="troupe-info">
+        <h3>Inganzo Ngari</h3>
+        <p>Known for elegant women's dance and colorful ceremonial routines.</p>
+        <p class="price">Base Price: 600 000 Rwf</p>
+        <a href="Bookings.html">Book Now</a>
+      </div>
+    </div>
+	
+	
+   </div>
+
+           </td></tr>
+	<tr>                                      </tr>
+	<tr>                                      </tr>
+	<tr>                                      </tr>
+	<tr height="100"><td colspan="5" style="text-align:center; color:black; background-color:#1e3d59; font-size:30"
+	> &copy; 2025 Rwanda Dance Troupe Booking. All rights reserved.</td></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+</html>

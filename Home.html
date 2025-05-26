@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home | Rwanda Dance Troupe Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: green;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        h2 {
+            color: #1e3d59;
+            text-align: center;
+        }
+        a.login-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #ff6e40;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a.login-link:hover {
+            background-color: #ff3d00;
+        }
+        .superadmin-section {
+            max-width: 800px;
+            margin: 40px auto 0;
+            text-align: right;
+        }
+        .superadmin-button {
+            background-color: #1e3d59;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .superadmin-button:hover {
+            background-color: #163148;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: green;
+            color: white;
+            margin-top: 40px;
+        }
+
+        /* Troupe Card Styles */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .troupe-card {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s;
+            text-align: center;
+        }
+        .troupe-card:hover {
+            transform: scale(1.02);
+        }
+        .troupe-card img {
+            width: 60%;
+            height: 200px;
+            object-fit: cover;
+            margin-top: 10px;
+        }
+        .troupe-info {
+            padding: 15px;
+        }
+        .troupe-info h3 {
+            margin-top: 0;
+        }
+        .price {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .book-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+        .book-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to Rwanda Dance Troupe Booking</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>About Us</h2>
+            <p>
+                We connect you with talented traditional Rwandan dance troupes for weddings, cultural ceremonies, corporate events, and more.
+                Celebrate your special moments with the richness of Rwandan heritage and performance.
+            </p>
+        </section>
+
+        <section>
+            <h2>Services We Offer</h2>
+            <ul>
+                <li>Booking traditional dance troupes for weddings and events</li>
+                <li>Customized performance packages</li>
+                <li>Coordination and scheduling</li>
+                <li>Live drumming and storytelling performances</li>
+                <li>Support for both local and diaspora clients</li>
+            </ul>
+        </section>
+
+        <!-- 🎭 Booking Troupes Section -->
+        <section>
+            <h2>Available Dance Troupes</h2>
+            <div class="container">
+                <div class="troupe-card">
+                    <img src="inyambo.jpeg" alt="Inyambo Culture Troupe">
+                    <div class="troupe-info">
+                        <h3>Inyambo Culture Troupe</h3>
+                        <p>Inyambo showcases the elegance of Rwandan traditional royal dances, known for their majestic cow-horn movements and live drumming.</p>
+                        <p class="price">Base Price: 500,000 Rwf</p>
+                        <a href="Login.html" class="book-btn">Book Now</a>
+                    </div>
+                </div>
+
+                <div class="troupe-card">
+                    <img src="inyamibwa.jpg" alt="Imboni zumuco Troupe">
+                    <div class="troupe-info">
+                        <h3>Imboni zumuco Troupe</h3>
+                        <p>A youth-led troupe preserving Rwandan heritage through storytelling, song, and synchronized dance routines.</p>
+                        <p class="price">Base Price: 600,000 Rwf</p>
+                        <a href="Login.html" class="book-btn">Book Now</a>
+                    </div>
+                </div>
+
+                <div class="troupe-card">
+                    <img src="intore.jpg" alt="Abakurambere Troupe">
+                    <div class="troupe-info">
+                        <h3>Abakurambere Troupe</h3>
+                        <p>Known for historical performances and re-enactments of Rwanda’s cultural traditions, especially during national holidays.</p>
+                        <p class="price">Base Price: 200,000 Rwf</p>
+                        <a href="Login.html" class="book-btn">Book Now</a>
+                    </div>
+                </div>
+
+                <div class="troupe-card" style="width: 100%;">
+                    <img src="ngari.jpg" alt="Inganzo Ngari">
+                    <div class="troupe-info">
+                        <h3>Inganzo Ngari</h3>
+                        <p>Known for elegant women's dance and colorful ceremonial routines.</p>
+                        <p class="price">Base Price: 600,000 Rwf</p>
+                        <a href="Login.html" class="book-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <a href="login.html" class="login-link">Login to Book a Troupe</a>
+    </main>
+
+    <div class="superadmin-section">
+        <a href="superadminlogin.html" class="superadmin-button">Log in as Super Admin</a>
+    </div>
+
+    <footer>
+        &copy; 2025 Rwanda Dance Troupe Booking. All rights reserved.
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Troupe_managers - Troupe Managers</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+    }
+    header {
+      background: green;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logout-btn {
+      background: #dc2626;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .sidebar {
+      width: 220px;
+      background: #333333;
+      color: #fff;
+      height: 100vh;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      padding-top: 2rem;
+    }
+    .sidebar a {
+      display: block;
+      padding: 1rem 1.5rem;
+      color: #ccc;
+      text-decoration: none;
+    }
+    .sidebar a:hover {
+      background: #374151;
+      color: #fff;
+    }
+    .main {
+      margin-left: 220px;
+      padding: 2rem;
+    }
+    .main h2 {
+      margin-bottom: 1rem;
+    }
+    .add-btn {
+      display: block;
+      margin-left: auto;
+      margin-bottom: 1rem;
+      padding: 0.5rem 1rem;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+    th {
+      background: #f9fafb;
+      font-weight: bold;
+    }
+
+    /* Dropdown styling */
+    .action-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .action-btn {
+      padding: 6px 12px;
+      font-size: 14px;
+      background-color: #4b5563;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 120px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      z-index: 1;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .dropdown-content a,
+    .dropdown-content button {
+      width: 100%;
+      color: #111;
+      background: none;
+      border: none;
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .dropdown-content a:hover,
+    .dropdown-content button:hover {
+      background-color: #f0f0f0;
+    }
+
+    .action-dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .main {
+        margin-left: 0;
+        padding: 1rem;
+      }
+
+      .sidebar {
+        position: relative;
+        height: auto;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Manage Troupe_managers</h1>
+  <div>Admin Portal</div>
+  <button class="logout-btn" onclick="logout()">Logout</button>
+</header>
+
+<div class="sidebar">
+  <a href="Grand&board.html">Dashboard</a>
+  <a href="Grand&bookings.html">Bookings</a>
+  <a href="Grand&Troupes.html">Troupes</a>
+  <a href="Grand&Customers.html">Customers</a>
+  <a href="Grand&Payments.html">Payments</a>
+  <a href="Grand&Feedbacks.html">Feedbacks</a>
+  <a href="Grand&manager.html">Troupe Managers</a>
+</div>
+
+<div class="main">
+  <h2>Troupe Managers</h2>
+  <button class="add-btn" onclick="addManagerRow()">Add New Manager</button>
+  <table>
+    <thead>
+      <tr>
+        <th>Manager Name</th>
+        <th>Troupe Name</th>
+        <th>Location</th>
+        <th>Contact</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="managerTable">
+      <tr>
+        <td>Eric Ndayishimiye</td>
+        <td>Inganzo Ngari</td>
+        <td>Kigali</td>
+        <td>+250 784 000 001</td>
+        <td>eric@inganzo.rw</td>
+        <td>
+          <div class="action-dropdown">
+            <button class="action-btn">Actions ▼</button>
+            <div class="dropdown-content">
+              <button onclick="editRow(this)">Edit</button>
+              <a href="admintroupes.html">View</a>
+              <button onclick="deleteRow(this)">Delete</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Claire Uwase</td>
+        <td>Abatarutwa</td>
+        <td>Huye</td>
+        <td>+250 788 234 567</td>
+        <td>claire@abatarutwa.rw</td>
+        <td>
+          <div class="action-dropdown">
+            <button class="action-btn">Actions ▼</button>
+            <div class="dropdown-content">
+              <button onclick="editRow(this)">Edit</button>
+              <a href="admintroupes.html">View</a>
+              <button onclick="deleteRow(this)">Delete</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+function logout() {
+  alert("You have been logged out.");
+  window.location.href = "Home.html";
+}
+
+function editRow(btn) {
+  const row = btn.closest("tr");
+  const cells = row.querySelectorAll("td:not(:last-child)");
+  const isEditMode = btn.textContent === "Edit";
+
+  cells.forEach(cell => {
+    if (isEditMode) {
+      const text = cell.textContent;
+      cell.innerHTML = `<input type="text" value="${text}" />`;
+    } else {
+      const input = cell.querySelector("input");
+      if (input) cell.textContent = input.value;
+    }
+  });
+
+  btn.textContent = isEditMode ? "Save" : "Edit";
+}
+
+function deleteRow(btn) {
+  const row = btn.closest("tr");
+  row.remove();
+}
+
+function addManagerRow() {
+  const table = document.getElementById("managerTable");
+  const newRow = document.createElement("tr");
+  newRow.innerHTML = `
+    <td><input type="text" placeholder="Manager Name" /></td>
+    <td><input type="text" placeholder="Troupe Name" /></td>
+    <td><input type="text" placeholder="Location" /></td>
+    <td><input type="text" placeholder="Contact" /></td>
+    <td><input type="email" placeholder="Email" /></td>
+    <td>
+      <div class="action-dropdown">
+        <button class="action-btn">Actions ▼</button>
+        <div class="dropdown-content">
+          <button onclick="editRow(this)">Save</button>
+          <a href="admintroupes.html">View</a>
+          <button onclick="deleteRow(this)">Delete</button>
+        </div>
+      </div>
+    </td>
+  `;
+  table.appendChild(newRow);
+}
+</script>
+
+</body>
+</html>

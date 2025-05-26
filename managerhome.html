@@ -1,0 +1,131 @@
+
+<html>
+<head>
+  
+  <title>Troupe Manager Home</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2e8b57;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="tel"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #2e8b57;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #256c47;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Troupe Manager Dashboard</h1>
+</header>
+
+<div class="container">
+  <h2>Update Troupe Information</h2>
+  <form>
+    <div class="form-group">
+      <label for="troupeName">Troupe Name:</label>
+      <input type="text" id="troupeName" name="troupeName" placeholder="e.g. Inyambo Cultural Troupe" required>
+    </div>
+
+    <div class="form-group">
+      <label for="dancers">Troupe description:</label>
+      <textarea id="dancers" name="dancers" placeholder="Enter your troupe description"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="availability">Availability:</label>
+      <select id="availability" name="availability">
+        <option value="available">Available</option>
+        <option value="not_available">Not Available</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Base Price (RWF):</label>
+      <input type="number" id="price" name="price" placeholder="e.g. 150000" required>
+    </div>
+
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" placeholder="e.g. Kigali" required>
+    </div>
+
+    <div class="form-group">
+      <label for="contactName">Contact Person Name:</label>
+      <input type="text" id="contactName" name="contactName" placeholder="e.g. Jean Uwimana" required>
+    </div>
+
+    <div class="form-group">
+      <label for="contactPhone">Contact Phone Number:</label>
+      <input type="tel" id="contactPhone" name="contactPhone" placeholder="e.g. +250788123456" required>
+    </div>
+
+    <button type="submit">Save Updates</button>
+  </form>
+</div>
+
+</body>
+</html>

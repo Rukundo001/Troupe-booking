@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage - Customers</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+    }
+    header {
+      background: green;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logout-btn {
+      background: #dc2626;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .sidebar {
+      width: 220px;
+      background: #333333;
+      color: #fff;
+      height: 100vh;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      padding-top: 2rem;
+    }
+    .sidebar a {
+      display: block;
+      padding: 1rem 1.5rem;
+      color: #ccc;
+      text-decoration: none;
+    }
+    .sidebar a:hover {
+      background: #374151;
+      color: #fff;
+    }
+    .main {
+      margin-left: 220px;
+      padding: 2rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      margin-top: 1rem;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+    th {
+      background: #f9fafb;
+      font-weight: bold;
+    }
+    select {
+      padding: 6px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    input {
+      width: 90%;
+      padding: 6px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    #addCustomerBtn {
+      padding: 8px 16px;
+      background-color: #10b981;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Manage Customers</h1>
+  <div>Admin Portal</div>
+  <button class="logout-btn" onclick="logout()">Logout</button>
+</header>
+
+<div class="sidebar">
+  <a href="Grand&board.html">Dashboard</a>
+  <a href="Grand&bookings.html">Bookings</a>
+  <a href="Grand&Troupes.html">Troupes</a>
+  <a href="Grand&Customers.html">Customers</a>
+  <a href="Grand&Payments.html">Payments</a>
+  <a href="Grand&Feedbacks.html">Feedbacks</a>
+  <a href="Grand&manager.html">Troupe Managers</a>
+</div>
+
+<div class="main">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+    <h2>Manage Customers</h2>
+    <button id="addCustomerBtn">➕ Add New Customer</button>
+  </div>
+
+  <table id="customersTable">
+    <thead>
+      <tr>
+        <th>C_ID</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Location</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- JS will render rows here -->
+    </tbody>
+  </table>
+</div>
+
+<script>
+  let customers = [
+    { id: 1, name: "Jean Uwimana", email: "jean@gmail.com", phone: "0788888888", location: "Kigali" },
+    { id: 2, name: "Grace Umutoni", email: "grace@gmail.com", phone: "0723456789", location: "Musanze" },
+	{ id: 3, name: "Emma Rukundo", email: "emma@gmail.com", phone: "0783456789", location: "Gasabo" },
+	{ id: 4, name: "James kalimba", email: "james@gmail.com", phone: "0785456789", location: "Rubavu" },
+	{ id: 5, name: "John Ntezimana", email: "john@gmail.com", phone: "0728765789", location: "Kayonza" },
+  ];
+
+  let editingIndex = null;
+
+  function renderTable() {
+    const tbody = document.querySelector('#customersTable tbody');
+    tbody.innerHTML = '';
+
+    customers.forEach((customer, index) => {
+      const row = document.createElement('tr');
+
+      if (editingIndex === index) {
+        row.innerHTML = `
+          <td>${customer.id}</td>
+          <td><input type="text" value="${customer.name}"></td>
+          <td><input type="email" value="${customer.email}"></td>
+          <td><input type="text" value="${customer.phone}"></td>
+          <td><input type="text" value="${customer.location}"></td>
+          <td>
+            <select onchange="handleAction(this, ${index}, true)">
+              <option value="">-- Select --</option>
+              <option value="save">Save</option>
+              <option value="cancel">Cancel</option>
+            </select>
+          </td>
+        `;
+      } else {
+        row.innerHTML = `
+          <td>${customer.id}</td>
+          <td>${customer.name}</td>
+          <td>${customer.email}</td>
+          <td>${customer.phone}</td>
+          <td>${customer.location}</td>
+          <td>
+            <select onchange="handleAction(this, ${index})">
+              <option value="">-- Select --</option>
+              <option value="edit">Edit</option>
+              <option value="delete">Delete</option>
+            </select>
+          </td>
+        `;
+      }
+
+      tbody.appendChild(row);
+    });
+  }
+
+  function handleAction(select, index, isEditing = false) {
+    const value = select.value;
+    select.selectedIndex = 0; // reset dropdown
+
+    if (value === "edit") {
+      editingIndex = index;
+      renderTable();
+    } else if (value === "delete") {
+      if (confirm("Are you sure you want to delete this customer?")) {
+        customers.splice(index, 1);
+        editingIndex = null;
+        renderTable();
+      }
+    } else if (value === "save") {
+      const row = select.closest('tr');
+      const inputs = row.querySelectorAll('input');
+
+      customers[index] = {
+        id: customers[index].id,
+        name: inputs[0].value.trim(),
+        email: inputs[1].value.trim(),
+        phone: inputs[2].value.trim(),
+        location: inputs[3].value.trim()
+      };
+
+      editingIndex = null;
+      renderTable();
+    } else if (value === "cancel") {
+      editingIndex = null;
+      renderTable();
+    }
+  }
+
+  document.getElementById("addCustomerBtn").addEventListener("click", () => {
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+      <td>New</td>
+      <td><input type="text" placeholder="Full Name"></td>
+      <td><input type="email" placeholder="Email"></td>
+      <td><input type="text" placeholder="Phone"></td>
+      <td><input type="text" placeholder="Location"></td>
+      <td>
+        <select>
+          <option value="">-- Select --</option>
+          <option value="save">Save</option>
+          <option value="cancel">Cancel</option>
+        </select>
+      </td>
+    `;
+
+    const select = newRow.querySelector("select");
+    select.addEventListener("change", () => {
+      const action = select.value;
+      select.selectedIndex = 0;
+
+      if (action === "save") {
+        const inputs = newRow.querySelectorAll('input');
+        const newCustomer = {
+          id: customers.length ? customers[customers.length - 1].id + 1 : 1,
+          name: inputs[0].value.trim(),
+          email: inputs[1].value.trim(),
+          phone: inputs[2].value.trim(),
+          location: inputs[3].value.trim(),
+        };
+
+        if (!newCustomer.name || !newCustomer.email || !newCustomer.phone || !newCustomer.location) {
+          alert('Please fill in all fields.');
+          return;
+        }
+
+        customers.push(newCustomer);
+        renderTable();
+      } else if (action === "cancel") {
+        newRow.remove();
+      }
+    });
+
+    const tbody = document.querySelector('#customersTable tbody');
+    tbody.prepend(newRow);
+  });
+
+  function logout() {
+    alert("You have been logged out.");
+    window.location.href = "Home.html";
+  }
+
+  renderTable();
+</script>
+
+</body>
+</html>
